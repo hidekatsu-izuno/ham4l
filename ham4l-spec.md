@@ -32,6 +32,7 @@ Each application in the apps array contains:
 - `description`: Localized description of the application.
 - `pages`: An array of pages defining the structure of the application.
 - `webapis`: An array of web apis defining the structure of the application.
+- `commands`: An array of cli commmands defining the structure of the application.
 - `logics`: An array of business logics defining the structure of the application.
 
 Example:
