@@ -1,0 +1,91 @@
+{
+  "ham4l": {
+    "version": 0.1.0",
+    "default-locale": "en"
+  },
+  "apps": [
+    {
+      "id": "example",
+      "name": { "en": "Example App", "ja": "サンプルアプリ" },
+      "description": { "en": "Example application of HAM4L.", "ja": "HAM4Lのサンプルアプリです。" }
+      "pages": [
+        {
+          "id": "signin",
+          "name": { "en": "Sign-in", "ja": "サインイン" },
+          "type": "signin",
+          "layout": [
+            {
+              "id": "title",
+              "type": "image",
+              "url": "./images/logo.svg",
+              "text": { "en": "Example App", "ja": "サンプルアプリ" }
+            },
+            {
+              "id": "userid_input",
+              "type": "text_field",
+              "label": { "en": "User ID", "ja": "ユーザーID" },
+              "filters": [
+                { "type": "trim" }
+              ],
+              "validators": [
+                { "type": "charranges", "ranges": ["alnum", "-"] }
+              ]
+            },
+            {
+              "id": "password_input",
+              "type": "password_field",
+              "label": { "en": "Password", "ja": "パスワード" },
+            },
+            {
+              "id": "login_button",
+              "type": "button",
+              "text": { "en": "Login", "ja": "ログイン" },
+              "events": {
+                "click": {
+                  "actions": [
+                    {
+                      "id": "validate",
+                      "type": "validate",
+                      "targets": [
+                        "userid_input",
+                        "password_input"
+                      ]
+                    },
+                    {
+                      "id": "confirm",
+                      "condition": "${validate.result}",
+                      "type": "confirm",
+                      "text": { "en": "Are you sure?", "ja": "ログインしますか？" }
+                    },
+                    {
+                      "id": "login",
+                      "condition": "${confirm.result}",
+                      "type": "call_webapi",
+                      "url": "/api/login",
+                      "params": {
+                        "userid": "${userid_input.value}",
+                        "password": "${password_input.value}",
+                      }
+                    },
+                    {
+                      "id": "go_next",
+                      "condition": "${login.result}",
+                      "type": "go",
+                      "page": "top"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "top",
+              "name": { "en": "Top", "ja": "トップ" },
+              "type": "form",
+              layout: []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
