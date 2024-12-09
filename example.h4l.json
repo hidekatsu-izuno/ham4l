@@ -1,6 +1,6 @@
 {
   "ham4l": {
-    "version": 0.1.0",
+    "version": "0.1.0",
     "default-locale": "en"
   },
   "apps": [
@@ -81,7 +81,7 @@
               "id": "top",
               "name": { "en": "Top", "ja": "トップ" },
               "type": "form",
-              layout: []
+              "layout": []
             }
           ]
         }
