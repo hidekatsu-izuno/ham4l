@@ -1,18 +1,35 @@
 {
   "ham4l": {
-    "version": "0.1.0",
-    "default-locale": "en"
+    "version": "0.1.0"
   },
   "apps": [
     {
       "id": "example",
       "name": { "en": "Example App", "ja": "サンプルアプリ" },
-      "description": { "en": "Example application of HAM4L.", "ja": "HAM4Lのサンプルアプリです。" }
+      "description": { "en": "Example application of HAM4L.", "ja": "HAM4Lのサンプルアプリです。" },
+      "default_locale": "en",
+      "default_timezone": "UTC",
       "pages": [
         {
+          "id": "private_pages",
+          "type": "page_group",
+          "path": "/private",
+          "restrictions": ["signedin"],
+          "pages": [
+            {
+              "id": "top",
+              "name": { "en": "Top", "ja": "トップ" },
+              "type": "dashboard",
+              "restrictions": ["signedin"],
+              "layout": []
+            }
+          ]
+        },
+        {
           "id": "signin",
+          "type": "signin_page",
+          "path": "/signin",
           "name": { "en": "Sign-in", "ja": "サインイン" },
-          "type": "signin",
           "layout": [
             {
               "id": "title",
@@ -76,12 +93,6 @@
                   ]
                 }
               }
-            },
-            {
-              "id": "top",
-              "name": { "en": "Top", "ja": "トップ" },
-              "type": "form",
-              "layout": []
             }
           ]
         }
