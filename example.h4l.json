@@ -12,7 +12,7 @@
       "pages": [
         {
           "id": "private_pages",
-          "type": "page_group",
+          "type": "group",
           "path": "/private",
           "restrictions": ["signedin"],
           "pages": [
@@ -20,14 +20,13 @@
               "id": "top",
               "name": { "en": "Top", "ja": "トップ" },
               "type": "dashboard",
-              "restrictions": ["signedin"],
               "layout": []
             }
           ]
         },
         {
           "id": "signin",
-          "type": "signin_page",
+          "type": "basic",
           "path": "/signin",
           "name": { "en": "Sign-in", "ja": "サインイン" },
           "layout": [
