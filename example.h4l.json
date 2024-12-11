@@ -65,23 +65,24 @@
                       "targets": [
                         "userid_input",
                         "password_input"
-                      ]
+                      ],
+                      "on_success": "confirm"
                     },
                     {
                       "id": "confirm",
-                      "condition": "${validate.result}",
                       "type": "confirm",
-                      "text": { "en": "Are you sure?", "ja": "ログインしますか？" }
+                      "text": { "en": "Are you sure?", "ja": "ログインしますか？" },
+                      "on_success": "login",
                     },
                     {
                       "id": "login",
-                      "condition": "${confirm.result}",
                       "type": "call_webapi",
                       "url": "/api/login",
                       "params": {
                         "userid": "${userid_input.value}",
                         "password": "${password_input.value}",
-                      }
+                      },
+                      "on_success": "go_next",
                     },
                     {
                       "id": "go_next",
@@ -94,6 +95,12 @@
               }
             }
           ]
+        }
+      ],
+      "webapis": [
+        {
+          "id": "login",
+          "path": "/api/login"
         }
       ]
     }
