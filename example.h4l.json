@@ -44,7 +44,7 @@
                 { "type": "trim" }
               ],
               "validators": [
-                { "type": "charranges", "ranges": ["alnum", "-"] }
+                { "type": "char_ranges", "ranges": ["alnum", "-"] }
               ]
             },
             {
@@ -101,6 +101,15 @@
         {
           "id": "login",
           "path": "/api/login"
+        }
+      ],
+      "entities": [
+        {
+          "id": "mt_user",
+          "type": "table",
+          "name": { "en": "Users", "ja": "ユーザーマスタ" },
+          "columns": [
+          ]
         }
       ]
     }
